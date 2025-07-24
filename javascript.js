@@ -4,7 +4,12 @@ const print = console.log;
 let bar = document.querySelector(".container");
 let percentageNum = document.querySelector(".num");
 let arrow = document.querySelector(".container .fa-arrow-down-long")
-bar.addEventListener("click", ()=>{
+bar.addEventListener("click", handleClick)
+
+
+
+function handleClick(){
+   
 
     let processPercentage = 0;
     let processInterval = setInterval(()=>{
@@ -20,6 +25,9 @@ bar.addEventListener("click", ()=>{
             percentageNum.innerHTML = `Done`;
             bar.style.background = `green`;
 
+            if (percentageNum.innerHTML === `Done`) {
+                bar.removeEventListener("click", handleClick)
+            }
         }
     },100)
 
@@ -28,7 +36,8 @@ bar.addEventListener("click", ()=>{
     arrow.style.transform = `translate(-50%, 220%)`;
     percentageNum.style.display = `block`
     
-})
+}
+
 
 
 
